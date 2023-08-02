@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter
+{% if editMode %}
+    Modifier
+    {% else %}
+        Ajouter
+{% endif %}
+
+
+{% endblock %}
+
+
+{% block body %}
+
+<h1 class="text-center my-4" >
+{% if editMode %}
+    Modifier
+{% else %}
+    Ajouter
+    {% endif %}
+ un article</h1>
+
+{# {{ form(form) }} #}
+
+{{ form_start(form, {
+    attr:{ novalidate: 'novalidate'}
+}) }}
+
+{# en twig un tableau { indice: valeur} en PHP [ indice => valeur] #}
+
+    {{ form_row(form.title , {
+        label: "Titre",
+        attr: {placeholder: "le titre de l'article"}
+    }) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.content) }}
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+
+{{ form_end(form) }}
+
+
+
+{% endblock %}
